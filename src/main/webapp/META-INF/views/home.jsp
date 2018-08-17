@@ -7,15 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <title>Programming School</title>
-    <link href="../../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <link href="../../vendor/bootstrap/css/bootstrap-grid.min.css" rel="stylesheet">
-    <link href="../../vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
-    <link href="../../vendor/datatables/dataTables.bootstrap4.css" rel="stylesheet">
-    <link href="../../css/sb-admin.css" rel="stylesheet">
-    <link href="../../css/style.css" rel="stylesheet">
 </head>
 <h1>Programming School App</h1>
-
 <div>
     <table class="table table-bordered" width="100%" cellspacing="0">
         <thead>
@@ -31,17 +24,18 @@
         <tbody>
         <c:forEach var="solution" items="${lastFive}">
             <tr>
-                <td><c:out value="${solution.id}"></c:out></td>
+                <td><a href="<c:url value="/solutionDetails"/>?solution.id=${solution.id}"> ${solution.id} </a></td>
                 <td> ${solution.created} </td>
                 <td> ${solution.updated} </td>
                 <td> ${solution.description} </td>
-                <td> ${solution.exercise_id} </td>
-                <td> ${solution.users_id} </td>
+                <td> <a href="<c:url value="/exerciseDetails"/>?exercise.id=${solution.exercise_id}"> ${solution.exercise_id} </a></td>
+                <td> <a href="<c:url value="/userDetails"/>?user.id=${solution.users_id}"> ${solution.users_id} </a></td>
             </tr>
         </c:forEach>
         </tbody>
     </table>
 </div>
+
 
 
 <%@include file="default/footer.jsp" %>
